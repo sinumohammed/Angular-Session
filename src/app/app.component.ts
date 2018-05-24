@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  name = 'John Doe';
+  
+  
+  onClick(){
+    console.log("clicked");
+  }
 }
