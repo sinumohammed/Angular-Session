@@ -65,7 +65,7 @@ export class EmployeeListComponent implements OnInit {
     }
 
     getMaleEmployeesCount(): number {
-        return this.employees.filter(e => e.code === 'Male').length;
+        return this.employees.filter(e => e.gender === 'Male').length;
     }
 
     getFemaleEmployeesCount(): number {
