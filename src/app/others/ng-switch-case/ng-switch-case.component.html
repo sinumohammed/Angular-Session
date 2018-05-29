@@ -1,0 +1,23 @@
+<ul class="">
+  <li [class.active]="viewMode=='map'">
+    <a (click)="viewMode='map'">Map</a>
+  </li>
+  <li [class.active]="viewMode=='list'">
+    <a (click)="viewMode='list'">List</a>
+  </li>
+</ul>
+<div class="container" [ngSwitch]="viewMode">
+  <div *ngSwitchCase="'map'">
+    Map view content
+  </div>
+  <div *ngSwitchCase="'list'">
+    List view content
+  </div>
+  <div *ngSwitchDefault>
+    Otherwise
+  </div>
+</div>
+<br/>
+<span appCustomHover hoverColor="red">
+  This is span text with custom hoverdirective.
+</span>

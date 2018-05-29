@@ -1,11 +1,8 @@
-<app-employee-count [all]="getTotalEmployeesCount()"
-                [male]="getMaleEmployeesCount()"
-                [female]="getFemaleEmployeesCount()"
-                (countRadioButtonSelectionChanged)="onEmployeeCountRadioButtonChange($event)">
-                >
+<app-employee-count *ngIf='employees' [all]="getTotalEmployeesCount()" [male]="getMaleEmployeesCount()" [female]="getFemaleEmployeesCount()"
+    (countRadioButtonSelectionChanged)="onEmployeeCountRadioButtonChange($event)">
 </app-employee-count>
 
-<br /><br />
+<br />
 <table>
     <thead>
         <tr>
@@ -17,21 +14,43 @@
         </tr>
     </thead>
     <tbody>
-      <ng-container *ngFor="let employee of employees;">
-        <tr *ngIf="selectedEmployeeCountRadioButton=='All' ||
-                   selectedEmployeeCountRadioButton==employee.gender">
-            <td>{{employee.code | uppercase}}</td>
-            <td>{{employee.name | employeeTitle:employee.gender }}</td>
-            <td>{{employee.gender}}</td>
-            <td>{{employee.annualSalary | currency:'USD':true:'1.3-3'}}</td>
-            <td>{{employee.dateOfBirth | date:'dd/MM/y'}}</td>
-        </tr>
-    </ng-container>
+        <ng-container *ngFor="let employee of employees;">
+            <tr *ngIf="selectedEmployeeCountRadioButton=='All' ||
+                   selectedEmployeeCountRadioButton==employee.gender">                
+                <td>
+                    <a [routerLink]="['/employees',employee.code]">
+                        {{employee.code | uppercase}}
+                    </a>
+                </td>
+                <td>{{employee.name | employeeTitle:employee.gender }}</td>
+                <td>{{employee.gender}}</td>
+                <td>{{employee.annualSalary | currency:'USD':true:'1.3-3'}}</td>
+                <td>{{employee.dateOfBirth | date:'dd/MM/y'}}</td>
+            </tr>
+        </ng-container>
 
-        <tr *ngIf="!employees || employees.length==0">
+        <!--If the web service takes time to return data, the message in this <tr>
+        is displayed. When the service call returns this message disappears
+        and the employees data is displayed-->
+        <tr *ngIf="!employees">
             <td colspan="5">
-                No employees to display
+                {{statusMessage}}
             </td>
         </tr>
+        <!--This message is displayed if the web services does not return any data-->
+        <tr *ngIf="employees && employees.length==0">
+            <td colspan="5">
+                No employee records to display
+            </td>
+        </tr>
+
     </tbody>
 </table>
+
+<!-- Singleton Demo -->
+
+<br/>
+<div>
+    Colour Preference :
+    <input type="text" [(ngModel)]="colour" [style.background]="colour" />
+</div>

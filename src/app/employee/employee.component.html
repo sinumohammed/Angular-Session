@@ -1,4 +1,4 @@
-<table>
+<table *ngIf="employee">
     <thead>
         <tr>
             <th attr.colspan="{{columnSpan}}">
@@ -8,23 +8,38 @@
     </thead>
     <tbody>
         <tr>
-            <td>First Name</td>
-            <td>{{firstName}}</td>
+            <td>Employee Code</td>
+            <td>{{employee.code}}</td>
         </tr>
         <tr>
-            <td>Last Name</td>
-            <td>{{lastName}}</td>
+            <td>Name</td>
+            <td>{{employee.name}}</td>
         </tr>
         <tr *ngIf='showDetails'>
             <td>Gender</td>
-            <td>{{gender}}</td>
+            <td>{{employee.gender}}</td>
         </tr>
         <tr *ngIf='showDetails'>
-            <td>Age</td>
-            <td>{{age}}</td>
+            <td>Annual Salary</td>
+            <td>{{employee.annualSalary}}</td>
+        </tr>
+        <tr>
+            <td>Date of Birth</td>
+            <td>{{employee.dateOfBirth}}</td>
         </tr>
     </tbody>
-</table><br />
+</table>
+<br />
 <button (click)='toggleDetails()'>
     {{showDetails ? 'Hide' : 'Show'}} Details
 </button>
+<br />
+<div *ngIf="!employee">
+    {{statusMessage}}
+</div>
+<!-- Router navigator -->
+<br />
+<div style="margin-top:5px">
+    <input type="button" class="btn btn-primary" value="Back to Employees List"
+           (click)="onBackButtonClick()"/>
+</div>

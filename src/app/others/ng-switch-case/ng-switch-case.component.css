@@ -1,0 +1,35 @@
+ul {
+    margin: 0;
+    padding: 0;
+    width: 104px;
+    height: 30px;
+    float: left;
+    list-style: none;
+    background-color: beige
+}
+li{
+    color: brown;
+    height: 19px;
+    width: 40px;
+    float: left;
+    padding: 5px;
+}
+li:hover{
+    cursor: pointer;
+}
+.active{
+    color: green;
+    border: 1px solid;
+    border-bottom-color: beige;
+    z-index: 555;
+}
+.container div{
+    border: 1px solid green;
+    width: 250px;
+    background-color: beige;
+    height: 150px;
+    padding: 10px;
+    font-size: 24px;
+    clear: both;
+    color: cornflowerblue;
+}

@@ -31,7 +31,7 @@ countRadioButtonSelectionChanged: EventEmitter<string> =
 // This method raises the custom event. We will bind this
 // method to the change event of all the 3 radio buttons
 onRadioButtonSelectionChange() {
-  console.log(this.selectedRadioButtonValue);
+  console.log(this.selectedRadioButtonValue,'From child');
     this.countRadioButtonSelectionChanged
         .emit(this.selectedRadioButtonValue);
 }
